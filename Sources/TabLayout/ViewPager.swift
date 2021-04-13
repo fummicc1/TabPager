@@ -3,14 +3,18 @@ import SwiftUI
 
 struct ViewPager: View {
     
-    @Binding var selection: Int
+    @ObservedObject var mediator: TabLayoutMediator
     
     let size: Int
     let content: (Int) -> AnyView
     
     var body: some View {
         TabView(
-            selection: _selection,
+            selection: Binding(get: {
+                mediator.currentIndex
+            }, set: { index in
+                mediator.currentIndex = index
+            }),
             content:  {
                 ForEach(0..<size) { index in
                     content(index)

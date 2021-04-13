@@ -1,4 +1,6 @@
 import SwiftUI
 
-class TabLayoutMediator {
+class TabLayoutMediator: ObservableObject {
+    
+    @Published var currentIndex: Int = 0    
 }
