@@ -20,6 +20,6 @@ struct ViewPager: View {
                     content(index)
                 }
             }
-        ).tabViewStyle(DefaultTabViewStyle())
+        ).tabViewStyle(PageTabViewStyle())
     }
 }

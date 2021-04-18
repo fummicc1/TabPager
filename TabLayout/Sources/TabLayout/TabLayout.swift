@@ -22,18 +22,25 @@ public struct TabLayout: View {
     }
     
     public var body: some View {
-        HStack {
-            ForEach(children.indices) { index in
-                let currentIndex = mediator.currentIndex
-                let child = children[index]
-                let backgroundColor = currentIndex == index ? self.tintColor : self.backgroundColor
-                let tintColor = currentIndex == index ? self.backgroundColor : self.tintColor
-                
-                Button(child.name) {
-                    mediator.currentIndex = index
+        VStack {
+            ViewPager(
+                mediator: mediator,
+                size: children.count) { index -> AnyView in
+                return children[index].content()
+            }
+            HStack {
+                ForEach(children.indices) { index in
+                    let currentIndex = mediator.currentIndex
+                    let child = children[index]
+                    let backgroundColor = currentIndex == index ? self.tintColor : self.backgroundColor
+                    let tintColor = currentIndex == index ? self.backgroundColor : self.tintColor
+                    
+                    Button(child.name) {
+                        mediator.currentIndex = index
+                    }
+                    .background(backgroundColor)
+                    .foregroundColor(tintColor)
                 }
-                .background(backgroundColor)
-                .foregroundColor(tintColor)
             }
         }
     }
@@ -46,13 +53,16 @@ extension TabLayout {
         }
         let name: String
         let index: Int
+        let content: () -> AnyView
         
         public init(
             index: Int,
-            name: String
+            name: String,
+            content: @escaping () -> AnyView
         ) {
             self.index = index
             self.name = name
+            self.content = content
         }
     }
 }

@@ -9,9 +9,9 @@ import SwiftUI
 import TabLayout
 
 let children: [TabLayout.Element] = [
-    TabLayout.Element(index: 0, name: "Sample 1"),
-    TabLayout.Element(index: 1, name: "Sample 2"),
-    TabLayout.Element(index: 2, name: "Sample 3"),
+    TabLayout.Element(index: 0, name: "Sample 1", content: { AnyView(Text("Sample 1")) }),
+    TabLayout.Element(index: 0, name: "Sample 2", content: { AnyView(Text("Sample 2")) }),
+    TabLayout.Element(index: 0, name: "Sample 3", content: { AnyView(Text("Sample 3")) }),
 ]
 
 let mediator: TabLayoutMediator = TabLayoutMediator()
