@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-struct TabLayout: View {
+public struct TabLayout: View {
     
     var children: [Element]
     let tintColor: Color
@@ -9,7 +9,7 @@ struct TabLayout: View {
     
     @ObservedObject var mediator: TabLayoutMediator
     
-    init(
+    public init(
         children: [Element],
         tintColor: Color,
         backgroundColor: Color = Color(UIColor.systemBackground),
@@ -21,7 +21,7 @@ struct TabLayout: View {
         self.backgroundColor = backgroundColor
     }
     
-    var body: some View {
+    public var body: some View {
         HStack {
             ForEach(children.indices) { index in
                 let currentIndex = mediator.currentIndex
@@ -40,11 +40,19 @@ struct TabLayout: View {
 }
 
 extension TabLayout {
-    struct Element: Identifiable {
-        var id: Int {
+    public struct Element: Identifiable {
+        public var id: Int {
             index
         }
         let name: String
         let index: Int
+        
+        public init(
+            index: Int,
+            name: String
+        ) {
+            self.index = index
+            self.name = name
+        }
     }
 }
