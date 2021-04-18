@@ -4,4 +4,4 @@
 
 # Current State
 
-![demo](./Resources/v_0_0_1.gif)
+<img src="https://github.com/fummicc1/TabPager/blob/main/Resources/v0_0_1.gif" height=720px>
